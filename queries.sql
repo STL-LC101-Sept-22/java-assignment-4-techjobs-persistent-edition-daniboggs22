@@ -1,4 +1,7 @@
--- Part 1: Test it with SQL  list the columns and their data types in the table as a SQL comment
+-- Part 1: Test it with SQL
+--SELECT COLUMN_NAME, DATA_TYPE
+--FROM INFORMATION_SCHEMA.COLUMNS
+--WHERE table_schema = 'techjobs' and table_name = 'job';
 
 -- Part 2: Test it with SQL
 
