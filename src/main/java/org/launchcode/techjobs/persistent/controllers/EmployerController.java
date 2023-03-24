@@ -46,8 +46,9 @@ private EmployerRepository employerRepository;
         }
     }
 
-    @GetMapping("index")
+    @GetMapping("")
     public String index(Model model){
+        employerRepository.findAll();
         model.addAttribute("title", "employers");
         return "employers/index";
     }
