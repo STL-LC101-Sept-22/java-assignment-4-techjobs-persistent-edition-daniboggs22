@@ -24,9 +24,9 @@ public class HomeController {
 @Autowired
     private EmployerRepository employerRepository;
 @Autowired
-private JobRepository jobRepository;
+    private JobRepository jobRepository;
 @Autowired
-private SkillRepository skillRepository;
+    private SkillRepository skillRepository;
     @RequestMapping("")
     public String index(Model model) {
 
@@ -48,18 +48,17 @@ private SkillRepository skillRepository;
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
                                        Errors errors, Model model,
-                                    @RequestParam int employerId
-                                    ) {
-//@RequestParam List<Integer> skills
+                                    @RequestParam int employerId,
+                                    @RequestParam List<Integer> skills) {
+
         if (errors.hasErrors()) {
            // model.addAttribute("title", "Add Job");
             return "add";
         }
             Employer employer =  employerRepository.findById(employerId).orElse(new Employer());
             newJob.setEmployer(employer);
-            //List<Skill> newSkills = (List<Skill>) skillRepository.findAllById(skills);
-
-            //newJob.setSkills(newSkills);
+            List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
+            newJob.setSkills(skillObjs);
             jobRepository.save(newJob);
         return "redirect:";
         }
