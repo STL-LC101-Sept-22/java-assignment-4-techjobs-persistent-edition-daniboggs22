@@ -10,3 +10,8 @@ WHERE location = "St. Louis City";
 -- Part 3: Test it with SQL
 DROP TABLE job;
 -- Part 4: Test it with SQL
+SELECT * FROM skill
+INNER JOIN job_Skills
+ON skill.id = job_Skills.skills_id
+WHERE job_Skills.jobs_id IS NOT NULL
+ORDER BY name ASC;
